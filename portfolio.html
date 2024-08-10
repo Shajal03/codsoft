@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        .header {
+            background: linear-gradient(to right, #ff9966, #ff5e62, #fc466b);
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+        .header.scrolled {
+            padding: 10px 0;
+            background: linear-gradient(to right, #fc466b, #3f5efb, #6a82fb);
+        }
+        .logo span {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+        .navb {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+        .navb a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .navb a:hover,
+        .navb .act {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .contact {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .home {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 100px 50px;
+            background: linear-gradient(to right, #3f5efb, #fc466b, #ff9966);
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+        .home h1 span {
+            color: #ffcd3c;
+        }
+        .home img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .home img:hover {
+            transform: scale(1.05);
+        }
+        .about,
+        .skills,
+        .projects,
+        .contact-f {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f0f4f8;
+            transition: background-color 0.3s ease;
+        }
+        .about h2 span,
+        .contact-f h2 span {
+            color: #fc466b;
+        }
+        .skills ul,
+        .projects ul {
+            list-style: none;
+            padding: 0;
+        }
+        .skills li,
+        .projects li {
+            background-color: #3f5efb;
+            color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .skills li:hover,
+        .projects li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .contact-f form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        .input-b {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .input-b input {
+            margin: 10px;
+            padding: 12px;
+            width: 220px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        .input-b input:focus {
+            border-color: #3f5efb;
+            outline: none;
+        }
+        textarea {
+            margin: 10px;
+            padding: 12px;
+            width: calc(100% - 40px);
+            max-width: 620px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #3f5efb;
+            outline: none;
+        }
+        .btn-1 {
+            background-color: #fc466b;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-1:hover {
+            background-color: #3f5efb;
+            transform: translateY(-3px);
+        }
+        footer {
+            background-color: #3f5efb;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        footer h2 {
+            margin: 5px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .home {
+                flex-direction: column;
+                text-align: center;
+            }
+            .home img {
+                margin-top: 30px;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo"><span>SRIKRISHNA SHAJAL BALAKA</span></a>
+        <nav class="navb">
+            <a href="#" class="act">Portfolio</a>
+            <a href="#">Skills</a>
+            <a href="#">Projects</a>
+            <a href="#">Education</a>
+        </nav>
+        <a href="#" class="contact">Contact Me</a>
+    </header>
+    <section class="home">
+        <div class="home-cont">
+            <h3>Hi</h3>
+            <h1>I'm<span> SRIKRISHNA SHAJAL BALAKA<br></span> a web developer</h1>
+            <p>I am a dedicated and versatile professional with a passion for developing websites,</p>
+            <p>In addition to my technical skills, I am a strong communicator and a proactive problem-solver.</p>
+            <p>I believe in the power of teamwork and strive to contribute positively to every team I join.</p>
+        </div>
+        <div class="img">
+            <img src="DSC_2754.jpg" alt="Srikrishna shajal Balaka">
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-im">
+            <!-- Add an image or additional content here if needed -->
+        </div>
+        <div class="about-cont">
+            <h2 class="head">About<span> Me</span></h2>
+            <h3>web <span>Developer</span></h3>
+            <p>My name is srikrishna shajal Balaka. I am pursuing my degree at Aditya Institute of Technology Management College of Engineering,</p>
+            <p>Andhra Pradesh, in the department of CSM.</p>
+            <p>My approach to work is defined by a commitment to excellence and a collaborative spirit.</p>
+        </div>
+    </section>
+    <div class="skills">
+        <h1>My Skills</h1>
+        <ul>
+            <li>C Language</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>digital marketing</li>
+            <li>Web Development</li>
+            <li>SQL</li>
+            <li>Data Structures</li>
+        </ul>
+    </div>
+    <div class="projects">
+        <h1>PROJECTS</h1>
+        <p>I have done mini projects using Python on:</p>
+        <ul>
+            <li>Calculator</li>
+            <li>Password Generator</li>
+        </ul>
+    </div>
+    <section class="contact-f">
+        <h2 class="contact-me">Contact<span> Me</span></h2>
+        <form action="#">
+            <div class="input-b">

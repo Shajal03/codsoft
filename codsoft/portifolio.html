@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: aqua;
+            box-sizing: border-box;
+        }
+       
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 80px 0 20px; 
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        section {
+            padding: 2em 1em;
+            margin: 0 auto;
+        }
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+        #about img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto; 
+        }
+        #skills ul {
+            list-style: none;
+            padding: 0;
+        }
+        #skills ul li {
+            background-color: #f4f4f4;
+            margin: 0.5em 0;
+            padding: 0.5em;
+            color: #e1306c;
+            border-radius: 5px;
+            max-width: 400px;
+            text-align: center;
+        }
+        #projects .project {
+            margin-bottom: 2em;
+        }
+        #projects .project img {
+            width: 100%;
+            height: auto;
+        }
+        #resume a {
+            display: inline-block;
+            padding: 0.5em 1em;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #contact h2 {
+            color: #4caf50;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+        #contact {
+            background-color: orange;
+            text-align: center;
+           
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    
+        #contact p:nth-child(2),
+        #contact p:nth-child(3),
+        #contact p:nth-child(4),
+        #contact p:nth-child(5) {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <input type="checkbox" id="check" class="checkbtn">
+        <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>
+        <label class="logo">portfolio</label>
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>SRIKRISHNA SHAJAL BALAKA</h1>
+        <p>Creative Web Developer with a Passion for Design and Innovation</p>
+    </header>
+
+    <section id="about">
+        <img src="profile.JPG" alt="SRIKRISHNA SHAJAL BALAKA">
+        <h2>About Me</h2>
+        <p>Hello! I'm Srikrishna Shajal, a passionate web developer with over 1 year of experience in creating dynamic and responsive websites. My expertise lies in front-end development, utilizing technologies such as HTML, CSS, JavaScript, and React. I have a keen eye for design and enjoy bringing innovative ideas to life through code.</p>
+        <p>Throughout my career, I've worked on a variety of projects ranging from small business websites to large-scale web applications. I thrive in collaborative environments and am always eager to learn new skills and stay updated with the latest industry trends. My goal is to deliver high-quality, user-friendly web solutions that not only meet but exceed client expectations.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>Front-End Development</li>
+            <li>Back-End Development</li>
+            <li>Database Management</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project Title</h3>
+            <img src="project-image.jpg" alt="Project Image">
+            <p>calculator using python</p>
+        </div>
+           </section>
+
+    <section id="resume">
+        <h2>Resume</h2>
+        <a href="resume.pdf" download>Download My Resume</a>
+    </section>
+
+    <section id="contact" style="width:100vw">
+        <h2>Contact</h2>
+        <p>Email:srikrishanashajal@gmail.com</p>
+        <p>Phone: 9110501479</p>
+        <p>insta: shajal_75</p>
+        <p>linkedin: shajalbalaka</p>
+    </section>
+
+    <script>
+        const checkbox = document.getElementById('check');
+        const navUl = document.querySelector('nav ul');
+
+        checkbox.addEventListener('change', () => {
+            navUl.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .display {
+            background-color: #333;
+            color: #fff;
+            font-size: 2em;
+            text-align: right;
+            padding: 20px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #444;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background-color: #eee;
+        }
+        .btn {
+            background-color: #fff;
+            border: none;
+            font-size: 1.5em;
+            padding: 20px;
+            transition: background-color 0.3s, transform 0.1s;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #ddd;
+        }
+        .btn:active {
+            background-color: #ccc;
+            transform: scale(0.95);
+        }
+        #clear {
+            background-color: #f44336;
+            color: #fff;
+        }
+        #clear:hover {
+            background-color: #e53935;
+        }
+        #equals {
+            background-color: #4caf50;
+            color: #fff;
+            grid-column: span 2;
+        }
+        #equals:hover {
+            background-color: #388e3c;
+        }
+        #divide, #multiply, #subtract, #add {
+            background-color: #ff9800;
+            color: #fff;
+        }
+        #divide:hover, #multiply:hover, #subtract:hover, #add:hover {
+            background-color: #f57c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn" data-value="7">7</button>
+            <button class="btn" data-value="8">8</button>
+            <button class="btn" data-value="9">9</button>
+            <button class="btn" data-value="/" id="divide">/</button>
+            <button class="btn" data-value="4">4</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="6">6</button>
+            <button class="btn" data-value="*" id="multiply">*</button>
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="2">2</button>
+            <button class="btn" data-value="3">3</button>
+            <button class="btn" data-value="-" id="subtract">-</button>
+            <button class="btn" data-value="0">0</button>
+            <button class="btn" data-value="." id="decimal">.</button>
+            <button class="btn" id="clear">C</button>
+            <button class="btn" data-value="+" id="add">+</button>
+            <button class="btn" id="equals">=</button>
+        </div>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+        const buttons = Array.from(document.querySelectorAll('.btn'));
+        let currentInput = '';
+        let firstNumber = '';
+        let operator = '';
+        let shouldResetDisplay = false;
+
+        function calculate() {
+            try {
+                let expression = `${firstNumber} ${operator} ${currentInput}`;
+                let result = eval(expression);
+                if (result === Infinity || result === -Infinity || isNaN(result)) {
+                    return 'Error';
+                }
+                return result;
+            } catch {
+                return 'Error';
+            }
+        }
+
+        buttons.map(button => {
+            button.addEventListener('click', (e) => {
+                const value = e.target.dataset.value || e.target.id;
+
+                if (value === 'C') {
+                    // Reset everything
+                    display.textContent = '0';
+                    currentInput = '';
+                    firstNumber = '';
+                    operator = '';
+                    shouldResetDisplay = false;
+                } else if (value === '=') {
+                    if (currentInput && firstNumber && operator) {
+                        const result = calculate();
+                        display.textContent = result;
+                        currentInput = result;
+                        firstNumber = '';
+                        operator = '';
+                        shouldResetDisplay = true;
+                    }
+                } else if (['/', '*', '-', '+'].includes(value)) {
+                    if (currentInput) {
+                        if (firstNumber && operator) {
+                            const result = calculate();
+                            display.textContent = result;
+                            firstNumber = result;
+                        } else {
+                            firstNumber = currentInput;
+                        }
+                        operator = value;
+                        currentInput = '';
+                        shouldResetDisplay = false;
+                    }
+                } else {
+                    if (shouldResetDisplay) {
+                        display.textContent = '';
+                        shouldResetDisplay = false;
+                    }
+                    currentInput += value;
+                    display.textContent = currentInput;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
